@@ -92,7 +92,7 @@ namespace PokerKata.Tests {
       }      
 
       [TestMethod]
-      public void HasTwoPair_WithTwoPair_ReturnsTrue() {
+      public void HasTwoPair_Success() {
          // arrange
          var testData = new[] {
             new TestData(HandHelpers.HandWithTwoPair, true),
@@ -104,7 +104,7 @@ namespace PokerKata.Tests {
       }
 
       [TestMethod]
-      public void HasThreeOfAKind_WithThreeOfAKind_ReturnsTrue() {
+      public void HasThreeOfAKind_Success() {
          // arrange
          var testData = new[] {
             new TestData(HandHelpers.HandWithThreeOfAKind, true),
@@ -116,7 +116,7 @@ namespace PokerKata.Tests {
       }
 
       [TestMethod]
-      public void HasPair_WithPair_ReturnsTrue() {
+      public void HasPair_Success() {
          // arrange
          var testData = new[] {
             new TestData(HandHelpers.HandWithPair, true),
