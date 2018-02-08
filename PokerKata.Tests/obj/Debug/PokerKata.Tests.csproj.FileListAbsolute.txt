@@ -1,0 +1,13 @@
+C:\Code\PokerKata\PokerKata.Tests\obj\Debug\PokerKata.Tests.csprojResolveAssemblyReference.cache
+C:\Code\PokerKata\PokerKata.Tests\bin\Debug\PokerKata.Tests.dll
+C:\Code\PokerKata\PokerKata.Tests\bin\Debug\PokerKata.Tests.pdb
+C:\Code\PokerKata\PokerKata.Tests\bin\Debug\Castle.Core.dll
+C:\Code\PokerKata\PokerKata.Tests\bin\Debug\Moq.dll
+C:\Code\PokerKata\PokerKata.Tests\bin\Debug\PokerKata.exe
+C:\Code\PokerKata\PokerKata.Tests\bin\Debug\PokerKata.pdb
+C:\Code\PokerKata\PokerKata.Tests\bin\Debug\Moq.pdb
+C:\Code\PokerKata\PokerKata.Tests\bin\Debug\Moq.xml
+C:\Code\PokerKata\PokerKata.Tests\obj\Debug\PokerKata.Tests.dll
+C:\Code\PokerKata\PokerKata.Tests\obj\Debug\PokerKata.Tests.pdb
+C:\Code\PokerKata\PokerKata.Tests\bin\Debug\PokerKata.exe.config
+C:\Code\PokerKata\PokerKata.Tests\obj\Debug\PokerKata.Tests.csproj.CoreCompileInputs.cache

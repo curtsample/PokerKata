@@ -1,0 +1,7 @@
+C:\Code\PokerKata\PokerKata\bin\Debug\PokerKata.exe.config
+C:\Code\PokerKata\PokerKata\bin\Debug\PokerKata.exe
+C:\Code\PokerKata\PokerKata\bin\Debug\PokerKata.pdb
+C:\Code\PokerKata\PokerKata\obj\Debug\PokerKata.exe
+C:\Code\PokerKata\PokerKata\obj\Debug\PokerKata.pdb
+C:\Code\PokerKata\PokerKata\obj\Debug\PokerKata.csprojResolveAssemblyReference.cache
+C:\Code\PokerKata\PokerKata\obj\Debug\PokerKata.csproj.CoreCompileInputs.cache
