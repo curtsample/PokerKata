@@ -50,6 +50,20 @@ namespace PokerKata.Tests {
       }
 
       [TestMethod]
+      public void HasFullHouse_Success() {
+         // arrange
+         var testData = new[] {
+            new TestData(HandHelpers.HandWithFullHouse, true),
+            new TestData(HandHelpers.HandWithThreeOfAKind, false),
+            new TestData(HandHelpers.HandWithPair, false),
+            new TestData(HandHelpers.HandWithNothing, false)
+         };
+
+         // act & assert
+         AssertTestData(testData, hand => hand.HasFullHouse());
+      }
+
+      [TestMethod]
       public void HasFlush_Success() {
          // arrange
          var testData = new[] {

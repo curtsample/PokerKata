@@ -30,6 +30,14 @@ namespace PokerKata.Tests {
             new Card(Rank.Eight, Suit.Hearts)
          });
 
+      public static FiveCardPokerHand HandWithFullHouse => new FiveCardPokerHand(new List<Card> {
+            new Card(Rank.Ace, Suit.Spades),
+            new Card(Rank.Ace, Suit.Diamonds),
+            new Card(Rank.Ace, Suit.Hearts),
+            new Card(Rank.Eight, Suit.Clubs),
+            new Card(Rank.Eight, Suit.Hearts)
+         });
+
       public static FiveCardPokerHand HandWithFlush => new FiveCardPokerHand(new List<Card> {
             new Card(Rank.Two, Suit.Clubs),
             new Card(Rank.Six, Suit.Clubs),

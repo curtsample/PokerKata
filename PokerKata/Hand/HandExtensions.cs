@@ -21,7 +21,10 @@ namespace PokerKata {
       public static bool HasFourOfAKind(this Hand hand) =>
          hand.GroupedByRank()
             .Where(w => w.Count == 4)
-            .Any();     
+            .Any();
+
+      public static bool HasFullHouse(this Hand hand) =>
+         hand.HasThreeOfAKind() && hand.HasPair();
 
       public static bool HasFlush(this Hand hand) =>
          hand.GroupedBySuit()
