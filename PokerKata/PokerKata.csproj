@@ -49,6 +49,7 @@
     <Compile Include="Hand\FiveCardPokerHand.cs" />
     <Compile Include="Hand\Hand.cs" />
     <Compile Include="Hand\HandExtensions.cs" />
+    <Compile Include="Hand\HandRank.cs" />
     <Compile Include="Utils\EnumHelpers.cs" />
     <Compile Include="Card\Rank.cs" />
     <Compile Include="Card\Suit.cs" />
