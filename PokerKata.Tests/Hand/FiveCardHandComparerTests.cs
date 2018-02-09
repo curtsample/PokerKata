@@ -36,6 +36,12 @@ namespace PokerKata.Tests {
          }
       }
 
+      [TestMethod]
+      [Description("Royal Flushes will always be the same, so a Split result should be returned")]
+      public void Compare_WithTwoRoyalFlushes_ReturnsSplit() {
+         Assert.AreEqual(HandCompareResult.Split, _comparer.Compare(HandHelpers.HandWithRoyalFlush, HandHelpers.HandWithRoyalFlush));
+      }
+
       private class TestData {
          public Hand First { get; private set; }
          public Hand Second { get; private set; }
