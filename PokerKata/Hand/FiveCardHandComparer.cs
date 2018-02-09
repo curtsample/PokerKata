@@ -30,10 +30,17 @@ namespace PokerKata {
          switch (rank) {
             case HandRank.RoyalFlush:
                return HandCompareResult.Split;
+            case HandRank.StraightFlush:
+               return CompareHighestRanks(firstHand, secondHand);
          }
 
          // should not reach here (famous last words...)
          throw new Exception($"Unable to compare the two hands provided for rank ${rank}");
       }
+
+      private HandCompareResult CompareHighestRanks(Hand first, Hand second) =>
+         first.Cards.Max(card => card.Rank) > second.Cards.Max(card => card.Rank)
+            ? HandCompareResult.FirstHandWins
+            : HandCompareResult.SecondHandWins;
    }
 }
