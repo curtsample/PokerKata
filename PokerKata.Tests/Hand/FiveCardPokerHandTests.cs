@@ -128,7 +128,6 @@ namespace PokerKata.Tests {
       }
 
       [TestMethod]
-      [ExpectedException(typeof(InvalidFiveCardHandException))]
       public void FiveCardPokerHand_WithInvalidNumberOfCardsProvided_Throws() {
          // arrange
          var threeCards = new List<Card> {

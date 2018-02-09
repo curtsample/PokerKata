@@ -9,6 +9,9 @@ namespace PokerKata {
       public int NumberOfCards { get; private set; }
 
       public InvalidFiveCardHandException(int numberOfCards)
-         : base($"Invalid five card hand -> ${numberOfCards} provided") { }
+         : base($"Invalid five card hand -> ${numberOfCards} provided") {
+
+         NumberOfCards = numberOfCards;
+      }
    }
 }
