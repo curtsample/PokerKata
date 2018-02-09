@@ -8,6 +8,6 @@ namespace PokerKata {
    public enum HandCompareResult {
       FirstHandWins,
       SecondHandWins,
-      Tie
+      Split
    }
 }
