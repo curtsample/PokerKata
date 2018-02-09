@@ -12,8 +12,13 @@ namespace PokerKata {
          _evaluator = evaluator;
       }
 
-      public HandCompareResult Compare(Hand firstHand, Hand secondHand) {         
-         throw new NotImplementedException();
+      public HandCompareResult Compare(Hand firstHand, Hand secondHand) {
+         var firstRank = _evaluator.Evaluate(firstHand);
+         var secondRank = _evaluator.Evaluate(secondHand);
+
+         return firstRank > secondRank
+            ? HandCompareResult.FirstHandWins
+            : HandCompareResult.SecondHandWins;
       }
    }
 }
