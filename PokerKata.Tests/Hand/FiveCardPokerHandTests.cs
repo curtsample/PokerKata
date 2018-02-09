@@ -127,6 +127,38 @@ namespace PokerKata.Tests {
          AssertTestData(testData, hand => hand.HasPair());
       }
 
+      [TestMethod]
+      [ExpectedException(typeof(InvalidFiveCardHandException))]
+      public void FiveCardPokerHand_WithInvalidNumberOfCardsProvided_Throws() {
+         // arrange
+         var threeCards = new List<Card> {
+            new Card(Rank.Five, Suit.Clubs),
+            new Card(Rank.Six, Suit.Clubs),
+            new Card(Rank.Seven, Suit.Clubs)            
+         };
+
+         var sevenCards = new List<Card> {
+            new Card(Rank.Five, Suit.Clubs),
+            new Card(Rank.Six, Suit.Clubs),
+            new Card(Rank.Seven, Suit.Clubs),
+            new Card(Rank.Eight, Suit.Clubs),
+            new Card(Rank.Nine, Suit.Clubs),
+            new Card(Rank.Ten, Suit.Clubs),
+            new Card(Rank.Jack, Suit.Clubs)
+         };
+
+         var invalidHands = new[] { threeCards, sevenCards };
+
+         foreach(var invalidHand in invalidHands) {
+            try {
+               new FiveCardPokerHand(invalidHand);
+            }
+            catch(InvalidFiveCardHandException ex) {
+               Assert.AreEqual(invalidHand.Count, ex.NumberOfCards);
+            }
+         }
+      }
+
       private void AssertTestData(TestData[] testData, Func<FiveCardPokerHand, bool> action) {
          foreach(var test in testData) {
             Assert.AreEqual(test.ExpectedResult, action.Invoke(test.Hand));
