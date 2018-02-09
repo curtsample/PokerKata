@@ -55,6 +55,7 @@
     <Compile Include="Hand\HandRank.cs" />
     <Compile Include="Hand\IHandComparer.cs" />
     <Compile Include="Hand\IHandEvaluator.cs" />
+    <Compile Include="Hand\InvalidFiveCardHandException.cs" />
     <Compile Include="Utils\EnumHelpers.cs" />
     <Compile Include="Card\Rank.cs" />
     <Compile Include="Card\Suit.cs" />
