@@ -16,9 +16,24 @@ namespace PokerKata {
          var firstRank = _evaluator.Evaluate(firstHand);
          var secondRank = _evaluator.Evaluate(secondHand);
 
-         return firstRank > secondRank
-            ? HandCompareResult.FirstHandWins
-            : HandCompareResult.SecondHandWins;
+         if (firstRank == secondRank) {
+            return CompareSameRanks(firstRank, firstHand, secondHand);
+         }
+         else {
+            return firstRank > secondRank
+               ? HandCompareResult.FirstHandWins
+               : HandCompareResult.SecondHandWins;
+         }
+      }
+
+      private HandCompareResult CompareSameRanks(HandRank rank, Hand firstHand, Hand secondHand) {
+         switch (rank) {
+            case HandRank.RoyalFlush:
+               return HandCompareResult.Split;
+         }
+
+         // should not reach here (famous last words...)
+         throw new Exception($"Unable to compare the two hands provided for rank ${rank}");
       }
    }
 }
