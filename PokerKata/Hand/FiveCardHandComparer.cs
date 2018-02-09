@@ -12,7 +12,7 @@ namespace PokerKata {
          _evaluator = evaluator;
       }
 
-      public HandCompareResult Compare(Hand firstHand, Hand secondHand) {
+      public HandCompareResult Compare(Hand firstHand, Hand secondHand) {         
          throw new NotImplementedException();
       }
    }

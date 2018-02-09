@@ -61,6 +61,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Card\CardTests.cs" />
+    <Compile Include="Hand\FiveCardHandComparerTests.cs" />
     <Compile Include="Hand\FiveCardHandEvaluatorTests.cs" />
     <Compile Include="Hand\FiveCardPokerHandTests.cs" />
     <Compile Include="Hand\HandHelpers.cs" />
