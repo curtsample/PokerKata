@@ -34,16 +34,10 @@ namespace PokerKata.Tests {
             new Card(Rank.Three, Suit.Clubs)
          });
 
-         var testData = new[] {
-            new TestData(winningHand, losingHand, HandCompareResult.FirstHandWins),
-            new TestData(losingHand, winningHand, HandCompareResult.SecondHandWins),
-            new TestData(winningHand, winningHand, HandCompareResult.Split)
-         };
+         var testData = GetTestData(winningHand, losingHand);
 
          // act & assert
-         foreach (var test in testData) {
-            Assert.AreEqual(test.ExpectedResult, _comparer.Compare(test.First, test.Second));
-         }
+         AssertTestData(testData);
       }
 
       [TestMethod]
@@ -65,16 +59,10 @@ namespace PokerKata.Tests {
             new Card(Rank.Four, Suit.Clubs)
          });
 
-         var testData = new[] {
-            new TestData(winningHand, losingHand, HandCompareResult.FirstHandWins),
-            new TestData(losingHand, winningHand, HandCompareResult.SecondHandWins),
-            new TestData(winningHand, winningHand, HandCompareResult.Split)
-         };
+         var testData = GetTestData(winningHand, losingHand);
 
          // act & assert
-         foreach (var test in testData) {
-            Assert.AreEqual(test.ExpectedResult, _comparer.Compare(test.First, test.Second));
-         }
+         AssertTestData(testData);
       }
 
       [TestMethod]
@@ -96,17 +84,29 @@ namespace PokerKata.Tests {
             new Card(Rank.Three, Suit.Spades),
          });
 
-         var testData = new[] {
-            new TestData(winningHand, losingHand, HandCompareResult.FirstHandWins),
-            new TestData(losingHand, winningHand, HandCompareResult.SecondHandWins),
-            new TestData(winningHand, winningHand, HandCompareResult.Split)
-         };
+         var testData = GetTestData(winningHand, losingHand);
 
          // act & assert
+         AssertTestData(testData);
+      }
+
+      #region Helpers
+
+      private void AssertTestData(TestData[] testData) {
          foreach (var test in testData) {
             Assert.AreEqual(test.ExpectedResult, _comparer.Compare(test.First, test.Second));
          }
       }
+
+      private TestData[] GetTestData(FiveCardPokerHand winningHand, FiveCardPokerHand losingHand) {
+         return new[] {
+            new TestData(winningHand, losingHand, HandCompareResult.FirstHandWins),
+            new TestData(losingHand, winningHand, HandCompareResult.SecondHandWins),
+            new TestData(winningHand, winningHand, HandCompareResult.Split)
+         };
+      }
+
+      #endregion
 
       private class TestData {
          public Hand First { get; private set; }
