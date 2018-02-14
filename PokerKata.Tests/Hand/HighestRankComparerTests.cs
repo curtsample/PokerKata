@@ -46,6 +46,37 @@ namespace PokerKata.Tests {
          }
       }
 
+      [TestMethod]
+      public void Compare_WithFlushes_Success() {
+         // arrange
+         var winningHand = new FiveCardPokerHand(new List<Card> {
+            new Card(Rank.Two, Suit.Clubs),
+            new Card(Rank.Six, Suit.Clubs),
+            new Card(Rank.Seven, Suit.Clubs),
+            new Card(Rank.Jack, Suit.Clubs),
+            new Card(Rank.King, Suit.Clubs)
+         });
+
+         var losingHand = new FiveCardPokerHand(new List<Card> {
+            new Card(Rank.Two, Suit.Clubs),
+            new Card(Rank.Six, Suit.Clubs),
+            new Card(Rank.Seven, Suit.Clubs),
+            new Card(Rank.Jack, Suit.Clubs),
+            new Card(Rank.Four, Suit.Clubs)
+         });
+
+         var testData = new[] {
+            new TestData(winningHand, losingHand, HandCompareResult.FirstHandWins),
+            new TestData(losingHand, winningHand, HandCompareResult.SecondHandWins),
+            new TestData(winningHand, winningHand, HandCompareResult.Split)
+         };
+
+         // act & assert
+         foreach (var test in testData) {
+            Assert.AreEqual(test.ExpectedResult, _comparer.Compare(test.First, test.Second));
+         }
+      }
+
       private class TestData {
          public Hand First { get; private set; }
          public Hand Second { get; private set; }
