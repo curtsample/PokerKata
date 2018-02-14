@@ -31,21 +31,11 @@ namespace PokerKata {
             case HandRank.RoyalFlush:
                return HandCompareResult.Split;
             case HandRank.StraightFlush:
-               return CompareHighestRanks(firstHand, secondHand);
+               return new HighestRankComparer().Compare(firstHand, secondHand);
          }
 
          // should not reach here (famous last words...)
          throw new Exception($"Unable to compare the two hands provided for rank ${rank}");
-      }
-
-      private HandCompareResult CompareHighestRanks(Hand first, Hand second) {
-         if (first.Cards.OrderBy(o => o.Rank).SequenceEqual(second.Cards.OrderBy(o => o.Rank))) {
-            return HandCompareResult.Split;
-         }
-
-         return first.Cards.Max(card => card.Rank) > second.Cards.Max(card => card.Rank)
-            ? HandCompareResult.FirstHandWins
-            : HandCompareResult.SecondHandWins;
       }
    }
 }
