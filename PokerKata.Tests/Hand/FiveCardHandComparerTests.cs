@@ -43,7 +43,7 @@ namespace PokerKata.Tests {
       }
 
       [TestMethod]
-      [Description("With two straight flushes, the hand with the highest card wins")]
+      [Description("With two straight flushes, the hand with the highest card wins, unless the same where a split is returned")]
       public void Compare_WithTwoStraightFlushes_Success() {
          // arrange
          var winningHand = new FiveCardPokerHand(new List<Card> {
@@ -64,7 +64,8 @@ namespace PokerKata.Tests {
 
          var testData = new[] {
             new TestData(winningHand, losingHand, HandCompareResult.FirstHandWins),
-            new TestData(losingHand, winningHand, HandCompareResult.SecondHandWins)
+            new TestData(losingHand, winningHand, HandCompareResult.SecondHandWins),
+            new TestData(winningHand, winningHand, HandCompareResult.Split)
          };
 
          // act & assert
