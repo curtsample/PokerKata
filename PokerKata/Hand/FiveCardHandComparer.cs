@@ -32,6 +32,7 @@ namespace PokerKata {
                return HandCompareResult.Split;
             case HandRank.StraightFlush:
             case HandRank.Flush:
+            case HandRank.Straight:
                return new HighestRankComparer().Compare(firstHand, secondHand);
          }
 
