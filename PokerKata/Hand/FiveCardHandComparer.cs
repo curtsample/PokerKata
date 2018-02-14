@@ -31,7 +31,9 @@ namespace PokerKata {
             case HandRank.RoyalFlush:
                return HandCompareResult.Split;
             case HandRank.StraightFlush:
-               return CompareHighestRanks(firstHand, secondHand);
+               return firstHand.Cards.OrderBy(o => o.Rank).SequenceEqual(secondHand.Cards.OrderBy(o => o.Rank))
+                  ? HandCompareResult.Split
+                  : CompareHighestRanks(firstHand, secondHand);
          }
 
          // should not reach here (famous last words...)
