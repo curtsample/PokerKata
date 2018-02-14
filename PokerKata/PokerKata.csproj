@@ -53,6 +53,7 @@
     <Compile Include="Hand\HandCompareResult.cs" />
     <Compile Include="Hand\HandExtensions.cs" />
     <Compile Include="Hand\HandRank.cs" />
+    <Compile Include="Hand\HighestRankComparer.cs" />
     <Compile Include="Hand\IHandComparer.cs" />
     <Compile Include="Hand\IHandEvaluator.cs" />
     <Compile Include="Hand\InvalidFiveCardHandException.cs" />

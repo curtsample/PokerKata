@@ -42,38 +42,6 @@ namespace PokerKata.Tests {
          Assert.AreEqual(HandCompareResult.Split, _comparer.Compare(HandHelpers.HandWithRoyalFlush, HandHelpers.HandWithRoyalFlush));
       }
 
-      [TestMethod]
-      [Description("With two straight flushes, the hand with the highest card wins, unless the same where a split is returned")]
-      public void Compare_WithTwoStraightFlushes_Success() {
-         // arrange
-         var winningHand = new FiveCardPokerHand(new List<Card> {
-            new Card(Rank.Nine, Suit.Clubs),
-            new Card(Rank.Eight, Suit.Clubs),
-            new Card(Rank.Seven, Suit.Clubs),
-            new Card(Rank.Six, Suit.Clubs),
-            new Card(Rank.Five, Suit.Clubs)
-         });
-
-         var losingHand = new FiveCardPokerHand(new List<Card> {
-            new Card(Rank.Seven, Suit.Clubs),
-            new Card(Rank.Six, Suit.Clubs),
-            new Card(Rank.Five, Suit.Clubs),
-            new Card(Rank.Four, Suit.Clubs),
-            new Card(Rank.Three, Suit.Clubs)
-         });
-
-         var testData = new[] {
-            new TestData(winningHand, losingHand, HandCompareResult.FirstHandWins),
-            new TestData(losingHand, winningHand, HandCompareResult.SecondHandWins),
-            new TestData(winningHand, winningHand, HandCompareResult.Split)
-         };
-
-         // act & assert
-         foreach (var test in testData) {
-            Assert.AreEqual(test.ExpectedResult, _comparer.Compare(test.First, test.Second));
-         }
-      }
-
       private class TestData {
          public Hand First { get; private set; }
          public Hand Second { get; private set; }

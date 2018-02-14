@@ -65,6 +65,7 @@
     <Compile Include="Hand\FiveCardHandEvaluatorTests.cs" />
     <Compile Include="Hand\FiveCardPokerHandTests.cs" />
     <Compile Include="Hand\HandHelpers.cs" />
+    <Compile Include="Hand\HighestRankComparerTests.cs" />
     <Compile Include="Utils\EnumHelperTests.cs" />
     <Compile Include="Deck\DeckTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
