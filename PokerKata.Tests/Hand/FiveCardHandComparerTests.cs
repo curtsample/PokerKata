@@ -46,7 +46,7 @@ namespace PokerKata.Tests {
       [Description("With two straight flushes, the hand with the highest card wins")]
       public void Compare_WithTwoStraightFlushes_Success() {
          // arrange
-         var firstHand = new FiveCardPokerHand(new List<Card> {
+         var winningHand = new FiveCardPokerHand(new List<Card> {
             new Card(Rank.Nine, Suit.Clubs),
             new Card(Rank.Eight, Suit.Clubs),
             new Card(Rank.Seven, Suit.Clubs),
@@ -54,7 +54,7 @@ namespace PokerKata.Tests {
             new Card(Rank.Five, Suit.Clubs)
          });
 
-         var secondHand = new FiveCardPokerHand(new List<Card> {
+         var losingHand = new FiveCardPokerHand(new List<Card> {
             new Card(Rank.Seven, Suit.Clubs),
             new Card(Rank.Six, Suit.Clubs),
             new Card(Rank.Five, Suit.Clubs),
@@ -62,11 +62,15 @@ namespace PokerKata.Tests {
             new Card(Rank.Three, Suit.Clubs)
          });
 
-         // act
-         var result = _comparer.Compare(firstHand, secondHand);
+         var testData = new[] {
+            new TestData(winningHand, losingHand, HandCompareResult.FirstHandWins),
+            new TestData(losingHand, winningHand, HandCompareResult.SecondHandWins)
+         };
 
-         // assert
-         Assert.AreEqual(HandCompareResult.FirstHandWins, result);
+         // act & assert
+         foreach (var test in testData) {
+            Assert.AreEqual(test.ExpectedResult, _comparer.Compare(test.First, test.Second));
+         }
       }
 
       private class TestData {
