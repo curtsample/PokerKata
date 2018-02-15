@@ -29,14 +29,9 @@ namespace PokerKata {
       }
 
       private HandCompareResult CompareSameRanks(HandRank rank, Hand firstHand, Hand secondHand) {
-         if (rank == HandRank.RoyalFlush) {
-            return HandCompareResult.Split;
-         }
-         else {
-            return _comparerFactory
-               .GetComparer(rank)
-               .Compare(firstHand, secondHand);
-         }
+         return rank == HandRank.RoyalFlush
+            ? HandCompareResult.Split
+            : _comparerFactory.GetComparer(rank).Compare(firstHand, secondHand);
       }
    }
 }
