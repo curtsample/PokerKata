@@ -128,6 +128,22 @@ namespace PokerKata.Tests {
       }
 
       [TestMethod]
+      public void GetPairedCards_Success() {
+         // arrange
+         var pairedTestData = new[] {
+            new PairedTestData(HandHelpers.HandWithFourOfAKind, 4),
+            new PairedTestData(HandHelpers.HandWithThreeOfAKind, 3),
+            new PairedTestData(HandHelpers.HandWithPair, 2),
+            new PairedTestData(HandHelpers.HandWithNothing, 0)
+         };
+
+         // act & assert
+         foreach (var test in pairedTestData) {
+            Assert.AreEqual(test.ExpectedResult, test.Hand.GetPairedCards().Count());
+         }
+      }
+
+      [TestMethod]
       public void FiveCardPokerHand_WithInvalidNumberOfCardsProvided_Throws() {
          // arrange
          var threeCards = new List<Card> {
@@ -161,6 +177,16 @@ namespace PokerKata.Tests {
       private void AssertTestData(TestData[] testData, Func<FiveCardPokerHand, bool> action) {
          foreach(var test in testData) {
             Assert.AreEqual(test.ExpectedResult, action.Invoke(test.Hand));
+         }
+      }
+
+      private class PairedTestData {
+         public FiveCardPokerHand Hand { get; private set; }
+         public int ExpectedResult { get; private set; }
+
+         public PairedTestData(FiveCardPokerHand hand, int expectedResult) {
+            Hand = hand;
+            ExpectedResult = expectedResult;
          }
       }
 

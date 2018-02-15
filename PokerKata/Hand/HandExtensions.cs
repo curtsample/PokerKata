@@ -69,6 +69,14 @@ namespace PokerKata {
             .Where(w => w.Count == 2)
             .Any();
 
+      public static IEnumerable<Card> GetPairedCards(this Hand hand) {
+         var pairedRanks = hand.GroupedByRank()
+            .Where(w => w.Count > 1)
+            .Select(s => s.Rank);
+
+         return hand.Cards.Where(w => pairedRanks.Contains(w.Rank));
+      }
+
       #region Helpers
 
       private static IEnumerable<RankGrouped> GroupedByRank(this Hand hand) =>
