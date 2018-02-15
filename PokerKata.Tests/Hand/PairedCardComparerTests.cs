@@ -50,13 +50,8 @@ namespace PokerKata.Tests {
             new Card(Rank.Eight, Suit.Hearts)
          });
 
-         var testData = new[] {
-            new TestData(winningPair, losingPair, HandCompareResult.FirstHandWins),
-            new TestData(losingPair, winningPair, HandCompareResult.SecondHandWins),
-            new TestData(winningPair, winningPair, HandCompareResult.Split),
-            new TestData(winningKicker, losingKicker, HandCompareResult.FirstHandWins),
-            new TestData(losingKicker, winningKicker, HandCompareResult.SecondHandWins)
-         };
+         var testData = HandCompareTestData.GetTestData(winningPair, losingPair)
+            .Concat(HandCompareTestData.GetTestData(winningKicker, losingKicker));
 
          // act & assert
          foreach (var test in testData) {
@@ -99,13 +94,8 @@ namespace PokerKata.Tests {
             new Card(Rank.Three, Suit.Clubs)
          });
 
-         var testData = new[] {
-            new TestData(winningPair, losingPair, HandCompareResult.FirstHandWins),
-            new TestData(losingPair, winningPair, HandCompareResult.SecondHandWins),
-            new TestData(winningPair, winningPair, HandCompareResult.Split),
-            new TestData(winningKicker, losingKicker, HandCompareResult.FirstHandWins),
-            new TestData(losingKicker, winningKicker, HandCompareResult.SecondHandWins)
-         };
+         var testData = HandCompareTestData.GetTestData(winningPair, losingPair)
+            .Concat(HandCompareTestData.GetTestData(winningKicker, losingKicker));
 
          // act & assert
          foreach (var test in testData) {
@@ -148,29 +138,12 @@ namespace PokerKata.Tests {
             new Card(Rank.Three, Suit.Clubs)
          });
 
-         var testData = new[] {
-            new TestData(winningPair, losingPair, HandCompareResult.FirstHandWins),
-            new TestData(losingPair, winningPair, HandCompareResult.SecondHandWins),
-            new TestData(winningPair, winningPair, HandCompareResult.Split),
-            new TestData(winningKicker, losingKicker, HandCompareResult.FirstHandWins),
-            new TestData(losingKicker, winningKicker, HandCompareResult.SecondHandWins)
-         };
+         var testData = HandCompareTestData.GetTestData(winningPair, losingPair)
+            .Concat(HandCompareTestData.GetTestData(winningKicker, losingKicker));
 
          // act & assert
          foreach (var test in testData) {
             Assert.AreEqual(test.ExpectedResult, _comparer.Compare(test.First, test.Second));
-         }
-      }
-
-      private class TestData {
-         public Hand First { get; private set; }
-         public Hand Second { get; private set; }
-         public HandCompareResult ExpectedResult { get; private set; }
-
-         public TestData(Hand first, Hand second, HandCompareResult expectedResult) {
-            First = first;
-            Second = second;
-            ExpectedResult = expectedResult;
          }
       }
    }

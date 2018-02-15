@@ -34,7 +34,7 @@ namespace PokerKata.Tests {
             new Card(Rank.Three, Suit.Clubs)
          });
 
-         var testData = GetTestData(winningHand, losingHand);
+         var testData = HandCompareTestData.GetTestData(winningHand, losingHand);
 
          // act & assert
          AssertTestData(testData);
@@ -59,7 +59,7 @@ namespace PokerKata.Tests {
             new Card(Rank.Four, Suit.Clubs)
          });
 
-         var testData = GetTestData(winningHand, losingHand);
+         var testData = HandCompareTestData.GetTestData(winningHand, losingHand);
 
          // act & assert
          AssertTestData(testData);
@@ -84,7 +84,7 @@ namespace PokerKata.Tests {
             new Card(Rank.Three, Suit.Spades),
          });
 
-         var testData = GetTestData(winningHand, losingHand);
+         var testData = HandCompareTestData.GetTestData(winningHand, losingHand);
 
          // act & assert
          AssertTestData(testData);
@@ -92,32 +92,12 @@ namespace PokerKata.Tests {
 
       #region Helpers
 
-      private void AssertTestData(TestData[] testData) {
+      private void AssertTestData(HandCompareTestData[] testData) {
          foreach (var test in testData) {
             Assert.AreEqual(test.ExpectedResult, _comparer.Compare(test.First, test.Second));
          }
       }
 
-      private TestData[] GetTestData(FiveCardPokerHand winningHand, FiveCardPokerHand losingHand) {
-         return new[] {
-            new TestData(winningHand, losingHand, HandCompareResult.FirstHandWins),
-            new TestData(losingHand, winningHand, HandCompareResult.SecondHandWins),
-            new TestData(winningHand, winningHand, HandCompareResult.Split)
-         };
-      }
-
       #endregion
-
-      private class TestData {
-         public Hand First { get; private set; }
-         public Hand Second { get; private set; }
-         public HandCompareResult ExpectedResult { get; private set; }
-
-         public TestData(Hand first, Hand second, HandCompareResult expectedResult) {
-            First = first;
-            Second = second;
-            ExpectedResult = expectedResult;
-         }
-      }
    }
 }
