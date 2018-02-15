@@ -61,14 +61,14 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Card\CardTests.cs" />
-    <Compile Include="Hand\FiveCardHandComparerTests.cs" />
+    <Compile Include="Comparer\FiveCardHandComparerTests.cs" />
     <Compile Include="Hand\FiveCardHandEvaluatorTests.cs" />
     <Compile Include="Hand\FiveCardPokerHandTests.cs" />
-    <Compile Include="Hand\HandComparerFactoryTests.cs" />
-    <Compile Include="Hand\HandCompareTestData.cs" />
+    <Compile Include="Comparer\HandComparerFactoryTests.cs" />
+    <Compile Include="Comparer\HandCompareTestData.cs" />
     <Compile Include="Hand\HandHelpers.cs" />
-    <Compile Include="Hand\HighestRankComparerTests.cs" />
-    <Compile Include="Hand\PairedCardComparerTests.cs" />
+    <Compile Include="Comparer\HighestRankComparerTests.cs" />
+    <Compile Include="Comparer\PairedCardComparerTests.cs" />
     <Compile Include="Utils\EnumHelperTests.cs" />
     <Compile Include="Deck\DeckTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
