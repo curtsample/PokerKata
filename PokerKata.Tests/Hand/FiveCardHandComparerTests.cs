@@ -61,10 +61,28 @@ namespace PokerKata.Tests {
             new Card(Rank.Ace, Suit.Hearts)
          });
 
+         var winningKicker = new FiveCardPokerHand(new List<Card> {
+            new Card(Rank.Ace, Suit.Spades),
+            new Card(Rank.Ace, Suit.Diamonds),
+            new Card(Rank.Ace, Suit.Hearts),
+            new Card(Rank.Ace, Suit.Clubs),
+            new Card(Rank.King, Suit.Hearts)
+         });
+
+         var losingKicker = new FiveCardPokerHand(new List<Card> {
+            new Card(Rank.Ace, Suit.Spades),
+            new Card(Rank.Ace, Suit.Diamonds),
+            new Card(Rank.Ace, Suit.Hearts),
+            new Card(Rank.Ace, Suit.Clubs),
+            new Card(Rank.Eight, Suit.Hearts)
+         });
+
          var testData = new[] {
             new TestData(winningPair, losingPair, HandCompareResult.FirstHandWins),
             new TestData(losingPair, winningPair, HandCompareResult.SecondHandWins),
-            new TestData(winningPair, winningPair, HandCompareResult.Split)
+            new TestData(winningPair, winningPair, HandCompareResult.Split),
+            new TestData(winningKicker, losingKicker, HandCompareResult.FirstHandWins),
+            new TestData(losingKicker, winningKicker, HandCompareResult.SecondHandWins)
          };
 
          // act & assert
