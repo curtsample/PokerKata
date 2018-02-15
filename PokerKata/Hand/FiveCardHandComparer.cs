@@ -35,6 +35,8 @@ namespace PokerKata {
             case HandRank.Straight:
                return new HighestRankComparer().Compare(firstHand, secondHand);
             case HandRank.FourOfAKind:
+            case HandRank.ThreeOfAKind:
+            case HandRank.Pair:
                return new PairedCardComparer().Compare(firstHand, secondHand);
          }
 
