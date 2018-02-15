@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 namespace PokerKata.Tests {
    [TestClass]
    public class FiveCardHandComparerTests {
-      private FiveCardHandComparer _comparer;      
+      private FiveCardHandComparer _comparer;
 
       [TestInitialize]
       public void BeforeEach() {
-         _comparer = new FiveCardHandComparer(new FiveCardHandEvaluator());
+         _comparer = new FiveCardHandComparer(new FiveCardHandEvaluator(), new HandComparerFactory());
       }
 
       [TestMethod]

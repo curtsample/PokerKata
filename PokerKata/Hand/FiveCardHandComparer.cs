@@ -7,9 +7,11 @@ using System.Threading.Tasks;
 namespace PokerKata {
    public class FiveCardHandComparer : IHandComparer {
       private readonly IHandEvaluator _evaluator;
+      private readonly IHandComparerFactory _comparerFactory;
 
-      public FiveCardHandComparer(IHandEvaluator evaluator) {
+      public FiveCardHandComparer(IHandEvaluator evaluator, IHandComparerFactory comparerFactory) {
          _evaluator = evaluator;
+         _comparerFactory = comparerFactory;
       }
 
       public HandCompareResult Compare(Hand firstHand, Hand secondHand) {
@@ -27,21 +29,14 @@ namespace PokerKata {
       }
 
       private HandCompareResult CompareSameRanks(HandRank rank, Hand firstHand, Hand secondHand) {
-         switch (rank) {
-            case HandRank.RoyalFlush:
-               return HandCompareResult.Split;
-            case HandRank.StraightFlush:
-            case HandRank.Flush:
-            case HandRank.Straight:
-               return new HighestRankComparer().Compare(firstHand, secondHand);
-            case HandRank.FourOfAKind:
-            case HandRank.ThreeOfAKind:
-            case HandRank.Pair:
-               return new PairedCardComparer().Compare(firstHand, secondHand);
+         if (rank == HandRank.RoyalFlush) {
+            return HandCompareResult.Split;
          }
-
-         // should not reach here (famous last words...)
-         throw new Exception($"Unable to compare the two hands provided for rank ${rank}");
+         else {
+            return _comparerFactory
+               .GetComparer(rank)
+               .Compare(firstHand, secondHand);
+         }
       }
    }
 }
