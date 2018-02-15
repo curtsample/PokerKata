@@ -34,10 +34,42 @@ namespace PokerKata {
             case HandRank.Flush:
             case HandRank.Straight:
                return new HighestRankComparer().Compare(firstHand, secondHand);
+            case HandRank.FourOfAKind:
+               return ComparePairedRanks(firstHand, secondHand);
          }
 
          // should not reach here (famous last words...)
          throw new Exception($"Unable to compare the two hands provided for rank ${rank}");
+      }
+
+      private HandCompareResult ComparePairedRanks(Hand firstHand, Hand secondHand) {
+         var firstHandPairedCards = firstHand.GetPairedCards();
+         var secondHandPairedCards = secondHand.GetPairedCards();
+
+         var firstHandPairRank = firstHandPairedCards.First().Rank;
+         var secondHandPairRank = secondHandPairedCards.First().Rank;
+
+         var firstHandKickers = firstHand.Cards.Except(firstHandPairedCards).OrderByDescending(o => o.Rank);
+         var secondHandKickers = secondHand.Cards.Except(secondHandPairedCards).OrderByDescending(o => o.Rank);
+
+         if (firstHandPairRank != secondHandPairRank) {
+            return firstHandPairRank > secondHandPairRank
+               ? HandCompareResult.FirstHandWins
+               : HandCompareResult.SecondHandWins;
+         }
+
+         for (int i = 0; i < firstHandKickers.Count(); i++) {
+            var firstKicker = firstHandKickers.ElementAt(i).Rank;
+            var secondKicker = secondHandKickers.ElementAt(i).Rank;
+
+            if (firstKicker != secondKicker) {
+               return firstKicker > secondKicker
+                  ? HandCompareResult.FirstHandWins
+                  : HandCompareResult.SecondHandWins;
+            }
+         }
+
+         return HandCompareResult.Split;
       }
    }
 }
